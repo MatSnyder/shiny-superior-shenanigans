@@ -1,1 +1,69 @@
 https://gist.github.com/bae57db23052b97200f33dcc6687c6d6
+
+#A codecademy export, with a bit of my own looping at the end, if the inconsistences didn't give it away. Above is the link, to the github, below is the raw coding:
+
+#In this program, we will be creating a game of Rock-Paper-Scissors, in which the user will select one of the three, the computer will randomize its own selection, and the program will determine a winner!
+
+from random import randint
+from time import sleep
+
+options = ["ROCK", "PAPER", "SCISSORS"]
+
+message = {
+  "tie": "Yawn it's a tie!",
+  "won": "Yay you won!",
+  "lost": "Aww you lost!"
+}
+
+def decide_winner(user_choice, computer_choice):
+  sleep(1)
+  print "You selected %s" % (user_choice)
+  sleep(1)
+  print "The computer selected %s" % (computer_choice)
+  if user_choice == computer_choice:
+    sleep(1)
+    print message["tie"]
+  elif (user_choice == "ROCK" and computer_choice == "SCISSORS") or (user_choice == "PAPER" and computer_choice == "ROCK") or (user_choice == "SCISSORS" and computer_choice == "PAPER"):
+  #elif user_choice == "ROCK" and computer_choice == "SCISSORS":
+    #print message["won"]
+  #elif user_choice == "PAPER" and computer_choice == "ROCK":
+   # print message["won"]
+ # elif user_choice == "SCISSORS" and computer_choice == "PAPER":
+    sleep (1)
+    print message["won"]
+  else:
+    sleep(1)
+    print message["lost"]
+    
+def play_RPS():
+  user_choice = raw_input("Enter Rock, Paper, or Scissors: ")
+  user_choice = user_choice.upper()
+  computer_choice = options[randint(0,2)]
+  decide_winner(user_choice, computer_choice)
+  play_again = raw_input("Would you like to play again? ")
+  play_again = play_again.upper()
+  if play_again == "YES":
+    print "Alright. Get ready to get them cheeks whipped, sahn!"
+    sleep(1)
+    play_RPS()
+  elif play_again == "NO":
+    print "You said %s??... Well good. No one wanted to play you, anyways." % (play_again)
+  else:
+    print "You had one job to do, and how to answer a question. Dammit. I need to think this through..."
+    sleep(1)
+    print "..."
+    sleep(1)
+    dumby = raw_input("Fine. I will give you but ONE more chance. Do you, or do you not want to play again? It's a yes or no, don't mess it up.")
+    dumby = dumby.upper()
+    if dumby == "YES":
+      print "Phew. Okay. Please don't screw this up again."
+      sleep(1)
+      play_RPS()
+    elif dumby == "NO":
+      print "You know. You could've saved us all a lot of time had you just said no the first time. Screw you."
+    else:
+      print "You... you're a real piece of work..."
+      sleep(1)
+      print "You don't deserve it. Goodbye."
+      
+play_RPS()  
